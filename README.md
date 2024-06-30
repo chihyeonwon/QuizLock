@@ -15,6 +15,7 @@
 ```
 
 ## 기능 구현
+![2024-06-30 16;23;58](https://github.com/chihyeonwon/QuizLock/assets/58906858/81c36126-e5c9-4410-9e59-78c47763d980)
 ```kotlin
 button.setOnClickListener {
 
