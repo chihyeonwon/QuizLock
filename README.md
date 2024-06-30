@@ -8,3 +8,47 @@
 // 지문인식 라이브러리 추가
     implementation("me.aflak.libraries:fingerprintdialog:2.4.2")
 ```
+## 레이아웃 
+![image](https://github.com/chihyeonwon/QuizLock/assets/58906858/b8df9ee9-461a-4b90-a830-23992afb1c47)
+```
+간단한 버튼을 가운데 배치하였습니다.
+```
+
+## 기능 구현
+```kotlin
+button.setOnClickListener {
+
+            // FingerPrintDialog로 지문인증을 쉽게 사용 가능
+            // 사용법은 AlertDialog의 빌더 패턴과 유사
+            FingerprintDialog.initialize(this)
+                .title("지문인증")
+                .message("지문으로 인증합니다.")
+                .callback(object : FingerprintCallback {
+                    // 인증 성공인 경우의 콜백 함수
+                    override fun onAuthenticationSuccess() {
+                        Toast.makeText(applicationContext, "인증", Toast.LENGTH_SHORT).show()
+                    }
+
+                    // 인증 실패인 경우의 콜백 함수
+                    override fun onAuthenticationCancel() {
+                        Toast.makeText(applicationContext, "인증 실패", Toast.LENGTH_SHORT).show()
+                    }
+                })
+                .show()
+        }
+```
+```
+버튼을 눌렀을 때 FingerprintDialog의 제목과 메시지를 초기화하고 다이얼로그의 형태로 사용자에게 제공한다음
+```
+
+## 인증 성공 시
+```kotlin
+// 인증 성공인 경우의 콜백 함수
+                    override fun onAuthenticationSuccess() {
+                        Toast.makeText(applicationContext, "인증", Toast.LENGTH_SHORT).show()
+                    }
+```
+```
+인증 성공 시의 콜백 함수 안에 intent로 적절한 화면을 보여준다는 등의 로직을 구현할 수 있다.
+```
+
